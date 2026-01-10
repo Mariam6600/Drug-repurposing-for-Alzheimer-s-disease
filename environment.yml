@@ -1,0 +1,29 @@
+name: alzheimer-drug-discovery
+channels:
+  - pytorch
+  - pyg
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch>=2.0.0
+  - pytorch-geometric>=2.3.0
+  - numpy>=1.24.0
+  - pandas>=2.0.0
+  - scipy>=1.10.0
+  - scikit-learn>=1.3.0
+  - matplotlib>=3.7.0
+  - seaborn>=0.12.0
+  - streamlit>=1.28.0
+  - jupyter>=1.0.0
+  - pip
+  - pip:
+    - gqlalchemy>=1.3.0
+    - mgclient>=1.3.0
+    - networkx>=3.0
+    - gensim>=4.3.0
+    - reportlab>=4.0.0
+    - google-generativeai>=0.3.0
+    - python-dotenv>=1.0.0
+    - tqdm>=4.65.0
+    - ipywidgets>=8.0.0

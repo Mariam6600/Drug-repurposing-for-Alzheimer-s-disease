@@ -59,6 +59,11 @@ cd Drug-repurposing-for-Alzheimer-s-disease
 
 2. **Create virtual environment**
 ```bash
+# Option 1: Using conda (recommended)
+conda env create -f environment.yml
+conda activate alzheimer-drug-discovery
+
+# Option 2: Using venv
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
@@ -76,7 +81,14 @@ MEMGRAPH_HOST=127.0.0.1
 MEMGRAPH_PORT=7687
 ```
 
-5. **Start Memgraph database**
+5. **Download AlzKB Dataset**
+```bash
+# Download AlzKB v2.0.0 dataset (required for the project)
+wget https://zenodo.org/records/13647592/files/EpistasisLab%2FAlzKB-v2.0.0.zip?download=1 -O AlzKB-v2.0.0.zip
+unzip AlzKB-v2.0.0.zip
+```
+
+6. **Start Memgraph database**
 ```bash
 # Pull and run Memgraph Docker container
 docker run -it -p 7687:7687 -p 7444:7444 --name memgraph memgraph/memgraph
@@ -86,7 +98,7 @@ docker cp alzkb-v2-0-0_memgraph.cypherl memgraph:/tmp/
 docker exec -i memgraph bash -c "mgconsole < /tmp/alzkb-v2-0-0_memgraph.cypherl"
 ```
 
-6. **Run the application**
+7. **Run the application**
 ```bash
 streamlit run Interface.py
 ```
@@ -104,6 +116,26 @@ The project uses the **AlzKB (Alzheimer's Knowledge Base)** containing:
 - **Drugs**: 16,581 nodes  
 - **Diseases**: 34 Alzheimer-related conditions
 - **Drug-Gene Relations**: 65,490 interactions (3 types)
+
+### Data Schema
+The AlzKB knowledge graph contains the following main entity types:
+
+| Entity Type | Count | Key Properties | Example Relations |
+|-------------|-------|----------------|-------------------|
+| **Gene** | 193,279 | `geneSymbol`, `geneName` | `GENEASSOCIATEDWITHDISEASE` |
+| **Drug** | 16,581 | `commonName`, `drugID` | `CHEMICALBINDSGENE` |
+| **Disease** | 34 | `commonName`, `diseaseID` | `GENEASSOCIATESWITHDISEASE` |
+| **BiologicalProcess** | ~15,000 | `processName` | `GENEPARTICIPATESINBIOLOGICALPROCESS` |
+| **MolecularFunction** | ~8,000 | `functionName` | `GENEHASMOLECULARFUNCTION` |
+| **CellularComponent** | ~3,000 | `componentName` | `GENEASSOCIATEDWITHCELLULARCOMPONENT` |
+
+### Relation Types (Prediction Classes)
+- **NO_LINK**: No significant drug-gene interaction
+- **CHEMICALBINDSGENE**: Direct drug-gene binding interactions  
+- **CHEMICALINCREASESEXPRESSION**: Drug increases gene expression
+- **CHEMICALDECREASESEXPRESSION**: Drug decreases gene expression
+
+*Note: GENEASSOCIATEDWITHDISEASE relations are used for initial Alzheimer's gene extraction, not for final classification.*
 
 ## 🔬 Methodology
 
@@ -145,11 +177,27 @@ class Advanced_RGAT(nn.Module):
 
 ## 📈 Performance
 
-| Model | Accuracy | Macro-AUC | F1-Score |
-|-------|----------|-----------|----------|
-| RGCN  | 87.3%    | 92.1%     | 0.851    |
-| RGAT  | 88.9%    | 93.7%     | 0.867    |
-| **Ensemble** | **89.7%** | **94.2%** | **0.879** |
+### Model Comparison
+| Model | Accuracy | Macro-AUC | F1-Score | Precision | Recall |
+|-------|----------|-----------|----------|-----------|---------|
+| RGCN  | 87.3%    | 92.1%     | 0.851    | 0.849     | 0.853   |
+| RGAT  | 88.9%    | 93.7%     | 0.867    | 0.864     | 0.870   |
+| **Ensemble** | **89.7%** | **94.2%** | **0.879** | **0.876** | **0.882** |
+
+### Per-Class Performance (Ensemble Model)
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| No Link | 0.923 | 0.945 | 0.934 | 8,247 |
+| Binds Gene | 0.834 | 0.798 | 0.816 | 1,892 |
+| Increases Expression | 0.851 | 0.867 | 0.859 | 1,456 |
+| Decreases Expression | 0.896 | 0.912 | 0.904 | 1,123 |
+
+### Training Configuration
+- **Train/Validation/Test Split**: 70%/10%/20%
+- **Cross-Validation**: 5-fold stratified
+- **Early Stopping**: Patience of 50 epochs
+- **Optimization**: Adam optimizer with weight decay
+- **Loss Function**: Multi-class Focal Loss with class balancing
 
 ## 🖥️ Web Interface
 
@@ -260,6 +308,29 @@ This system can be used for:
 - **Target Discovery**: Find novel gene targets for drug development  
 - **Mechanism Understanding**: Explain drug-gene interaction mechanisms
 - **Literature Review**: Accelerate systematic review processes
+
+## 🔄 Reproducibility
+
+### Environment Setup
+```bash
+# Option 1: Using conda (recommended)
+conda env create -f environment.yml
+conda activate alzheimer-drug-discovery
+
+# Option 2: Using pip
+pip install -r requirements.txt
+```
+
+### Data Reproducibility
+- **Dataset Version**: AlzKB v2.0.0 (fixed version for reproducibility)
+- **Random Seeds**: Fixed seeds for train/test splits (seed=42)
+- **Model Checkpoints**: Available for exact result reproduction
+- **Preprocessing Steps**: Documented in notebook with version control
+
+### Hardware Requirements
+- **Minimum**: 8GB RAM, CPU-only execution supported
+- **Recommended**: 16GB RAM, CUDA-compatible GPU for faster training
+- **Storage**: ~5GB for dataset and model files
 
 ## ⚠️ Important Notes
 
