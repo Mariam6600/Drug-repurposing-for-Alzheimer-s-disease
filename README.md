@@ -124,10 +124,10 @@ The AlzKB knowledge graph contains the following main entity types:
 |-------------|-------|----------------|-------------------|
 | **Gene** | 193,279 | `geneSymbol`, `geneName` | `GENEASSOCIATEDWITHDISEASE` |
 | **Drug** | 16,581 | `commonName`, `drugID` | `CHEMICALBINDSGENE` |
-| **Disease** | 34 | `commonName`, `diseaseID` | `GENEASSOCIATESWITHDISEASE` |
-| **BiologicalProcess** | ~15,000 | `processName` | `GENEPARTICIPATESINBIOLOGICALPROCESS` |
-| **MolecularFunction** | ~8,000 | `functionName` | `GENEHASMOLECULARFUNCTION` |
-| **CellularComponent** | ~3,000 | `componentName` | `GENEASSOCIATEDWITHCELLULARCOMPONENT` |
+| **Disease** | 34 | `commonName`, `diseaseID` | `GENEASSOCIATEDWITHDISEASE` |
+| **BiologicalProcess** | 12,322 | `processName` | `GENEPARTICIPATESINBIOLOGICALPROCESS` |
+| **MolecularFunction** | 3,460 | `functionName` | `GENEHASMOLECULARFUNCTION` |
+| **CellularComponent** | 1,695 | `componentName` | `GENEASSOCIATEDWITHCELLULARCOMPONENT` |
 
 ### Relation Types (Prediction Classes)
 - **NO_LINK**: No significant drug-gene interaction
@@ -141,7 +141,7 @@ The AlzKB knowledge graph contains the following main entity types:
 ```
 Total Nodes: 234,037
 Total Edges: 1,668,487
-Alzheimer Subgraph: ~50,000 nodes, ~65,000 drug-gene relations
+Alzheimer Subgraph: 998 nodes, 4,232 total edges
 Prediction Classes: 4 (including NO_LINK)
 ```
 
