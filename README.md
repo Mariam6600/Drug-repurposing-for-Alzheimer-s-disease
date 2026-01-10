@@ -307,7 +307,7 @@ If you use this work in your research, please cite:
 @misc{alzheimer_gnn_llm_2026,
   title={Knowledge Graph-Enhanced Drug-Gene Interaction Prediction in Alzheimer's Disease: A GNN-LLM Approach},
   author={Mariam Abdul aal},
-  year={2026},
+  year={2025-2026},
   howpublished={GitHub Repository},
   url={https://github.com/Mariam6600/Drug-repurposing-for-Alzheimer-s-disease},
   note={Computational framework for drug-gene interaction analysis and hypothesis generation}
