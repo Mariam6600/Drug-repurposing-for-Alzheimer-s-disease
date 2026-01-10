@@ -53,8 +53,8 @@ This project presents a novel computational framework for drug-gene interaction 
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/alzheimers-drug-gene-interaction-gnn-llm.git
-cd alzheimers-drug-gene-interaction-gnn-llm
+git clone https://github.com/Mariam6600/Drug-repurposing-for-Alzheimer-s-disease.git
+cd Drug-repurposing-for-Alzheimer-s-disease
 ```
 
 2. **Create virtual environment**
@@ -171,11 +171,11 @@ The Streamlit application provides:
 ## 📁 Project Structure
 
 ```
-alzheimers-drug-gene-interaction-gnn-llm/
+Drug-repurposing-for-Alzheimer-s-disease/
 ├── Alzheimer's disease _exp10_ALZKB.ipynb  # Main analysis notebook
 ├── Interface.py                            # Streamlit web application
 ├── requirements.txt                        # Python dependencies
-├── .env.example                           # Environment variables template
+├── .gitignore                             # Git ignore file
 ├── data/                                  # Generated data files
 │   ├── alz_drugs_list.csv                # Extracted drug entities
 │   ├── alz_genes_list.csv                # Extracted gene entities
@@ -306,10 +306,10 @@ If you use this work in your research, please cite:
 ```bibtex
 @misc{alzheimer_gnn_llm_2024,
   title={Knowledge Graph-Enhanced Drug-Gene Interaction Prediction in Alzheimer's Disease: A GNN-LLM Approach},
-  author={[Your Name]},
+  author={Mariam Abdulrahman},
   year={2024},
   howpublished={GitHub Repository},
-  url={https://github.com/yourusername/alzheimers-drug-gene-interaction-gnn-llm},
+  url={https://github.com/Mariam6600/Drug-repurposing-for-Alzheimer-s-disease},
   note={Computational framework for drug-gene interaction analysis and hypothesis generation}
 }
 ```
@@ -328,9 +328,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Author**: [Your Name]
-- **Email**: [your.email@domain.com]
-- **Project Link**: [https://github.com/yourusername/alzheimers-drug-gene-interaction-gnn-llm](https://github.com/yourusername/alzheimers-drug-gene-interaction-gnn-llm)
+- **Author**: Mariam Abdulrahman
+- **Email**: abdmariam900@gmail.com
+- **Project Link**: [https://github.com/Mariam6600/Drug-repurposing-for-Alzheimer-s-disease](https://github.com/Mariam6600/Drug-repurposing-for-Alzheimer-s-disease)
 
 ---
 
