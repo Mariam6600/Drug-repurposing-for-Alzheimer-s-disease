@@ -22,7 +22,7 @@ This project presents a novel computational framework for drug-gene interaction 
 - 🧠 **Advanced GNN Architecture** using RGCN and RGAT models with ensemble learning
 - 🤖 **AI-Powered Explanations** via Google Gemini integration
 - 📊 **Interactive Web Interface** with bilingual support (Arabic/English)
-- 📈 **High Performance**: 89.7% accuracy, 94.2% macro-AUC
+- 📈 **High Performance**: 88.9% accuracy, 94.2% macro-AUC
 - 📄 **PDF Report Generation** for analysis results
 
 ## 🏗️ Architecture
@@ -190,7 +190,7 @@ class Advanced_RGAT(nn.Module):
 |-------|----------|-----------|----------|-----------|---------|
 | RGCN  | 87.3%    | 92.1%     | 0.851    | 0.849     | 0.853   |
 | RGAT  | 88.9%    | 93.7%     | 0.867    | 0.864     | 0.870   |
-| **Ensemble** | **89.7%** | **94.2%** | **0.879** | **0.876** | **0.882** |
+| **Ensemble** | **88.9%** | **94.2%** | **0.879** | **0.876** | **0.882** |
 
 ### Per-Class Performance (Ensemble Model)
 | Class | Precision | Recall | F1-Score | Support |
@@ -217,37 +217,26 @@ The Streamlit application provides:
 - **Report Generation**: PDF export functionality
 - **Bilingual Support**: Arabic and English interfaces
 
-### Interface Features
-- Interactive drug-gene relationship exploration
-- Confidence scores and probability distributions
-- Scientific explanation generation
-- Report basket for multiple analyses
-- PDF export with professional formatting
-
-### User Interface Preview
-```
-🔬 Alzheimer's Drug Discovery System
-
-Drug Selection: [Donepezil ▼]
-┌─────────────────────────────────────┐
-│ Predict Link    │ Explain with AI   │
-└─────────────────────────────────────┘
-
-Relations Summary:
-┌─────────────┬─────────────┬─────────────┬─────────────┐
-│  NO_LINK    │ BINDS_GENE  │ INCREASES   │ DECREASES   │
-│  1,234 genes│  456 genes  │  789 genes  │  321 genes  │
-└─────────────┴─────────────┴─────────────┴─────────────┘
-
-Selected: CHEMICALBINDSGENE
-Gene: APOE — Confidence 87.3%
-
-🤖 AI Explanation:
-Based on available data, the computational model suggests...
-```
-
-*Note: Actual interface includes interactive elements, real-time predictions, and bilingual support.*
-
+## 📁 Project Structure
+┌─────────────────────────────────────────────────────────────┐
+│  🧠 Alzheimer's Drug Discovery                              │
+├─────────────────────────────────────────────────────────────┤
+│  Drug Selection: [Memantine ▼]                             │
+│  ┌─────────────────┐  ┌─────────────────┐                  │
+│  │  Predict Link   │  │ Explain with AI │                  │
+│  └─────────────────┘  └─────────────────┘                  │
+├─────────────────────────────────────────────────────────────┤
+│  📊 Relations Summary                                       │
+│  ┌─────────────┬─────────────┬─────────────┬─────────────┐  │
+│  │  NO_LINK    │ BINDS_GENE  │ INCREASES   │ DECREASES   │  │
+│  │  8,247 genes│ 1,892 genes │ 1,456 genes │ 1,123 genes │  │
+│  └─────────────┴─────────────┴─────────────┴─────────────┘  │
+├─────────────────────────────────────────────────────────────┤
+│  🎯 Selected: CHEMICALBINDSGENE                             │
+│  Gene: CHRNA7 — Confidence 79.1%                           │
+│                                                             │
+│  🤖 AI Explanation:                                         │
+│  Based on available computational data, the model          │
 ## 📁 Project Structure
 
 ```
