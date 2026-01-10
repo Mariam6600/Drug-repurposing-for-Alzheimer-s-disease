@@ -1,0 +1,252 @@
+# Knowledge Graph-Enhanced Drug-Gene Interaction Prediction - .gitignore
+
+# ============================================================================
+# CRITICAL: Environment Variables & API Keys
+# ============================================================================
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+
+# ============================================================================
+# Python
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ============================================================================
+# Virtual Environments
+# ============================================================================
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+alzheimer_env/
+graduation_env/
+
+# ============================================================================
+# Jupyter Notebook
+# ============================================================================
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+
+# ============================================================================
+# PyTorch & Machine Learning Models
+# ============================================================================
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.ckpt
+checkpoints/
+models/
+weights/
+
+# ============================================================================
+# Large Data Files
+# ============================================================================
+*.csv
+*.json
+*.parquet
+*.feather
+*.xlsx
+*.xls
+data/
+datasets/
+raw_data/
+processed_data/
+
+# Exception: Keep small example files
+!example_data.csv
+!sample_*.json
+
+# ============================================================================
+# Database Files
+# ============================================================================
+*.db
+*.sqlite
+*.sqlite3
+*.cypherl
+memgraph_data/
+neo4j_data/
+
+# ============================================================================
+# Generated Reports & Outputs
+# ============================================================================
+*.pdf
+reports/
+outputs/
+results/
+plots/
+figures/
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# Exception: Keep documentation images
+!docs/images/*.png
+!README_images/*.png
+
+# ============================================================================
+# Logs & Temporary Files
+# ============================================================================
+*.log
+logs/
+temp/
+tmp/
+.tmp/
+*.tmp
+*.temp
+
+# ============================================================================
+# IDE & Editor Files
+# ============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ============================================================================
+# Streamlit
+# ============================================================================
+.streamlit/
+streamlit_cache/
+
+# ============================================================================
+# Docker
+# ============================================================================
+docker-compose.override.yml
+.dockerignore
+
+# ============================================================================
+# API Keys & Credentials (Extra Protection)
+# ============================================================================
+*api_key*
+*secret*
+*token*
+*credential*
+*password*
+config/secrets/
+secrets/
+
+# ============================================================================
+# System Files
+# ============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ============================================================================
+# Backup Files
+# ============================================================================
+*.bak
+*.backup
+*.old
+*~
+
+# ============================================================================
+# Cache Directories
+# ============================================================================
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.coverage.*
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# ============================================================================
+# Documentation Build
+# ============================================================================
+docs/_build/
+site/
+
+# ============================================================================
+# Package Manager Files
+# ============================================================================
+pip-log.txt
+pip-delete-this-directory.txt
+.pip-cache/
+
+# ============================================================================
+# Project-Specific Exclusions
+# ============================================================================
+# Graduation project specific paths
+C:/Users/LOQ/Desktop/Graduation/
+/Users/*/Desktop/Graduation/
+**/Graduation/**/*.env
+
+# Large model files
+*_embeddings.pkl
+*_features.pkl
+*_tensors.pt
+*_graph_data.pt
+*multi.pt
+
+# Generated analysis files
+alz_*.csv
+*_analysis_*.csv
+*_predictions.csv
+*_interpretation.json
+*_metadata.json
+
+# Confusion matrices and plots
+*confusion_matrix.png
+*learning_curves.png
+*_curves.png
+
+# PDF reports
+alzheimer_analysis_report_*.pdf
+*_report_*.pdf
+
+# ============================================================================
+# Security Note
+# ============================================================================
+# This .gitignore is designed to protect sensitive information including:
+# - API keys (Gemini, OpenAI, etc.)
+# - Database credentials
+# - Personal file paths
+# - Large data files that shouldn't be in version control
+# - Generated model weights and outputs
+#
+# Always review files before committing to ensure no sensitive data is included!
+# ============================================================================

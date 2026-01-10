@@ -1,0 +1,56 @@
+# Knowledge Graph-Enhanced Drug-Gene Interaction Prediction in Alzheimer's Disease: A GNN-LLM Approach
+# Requirements File for Complete Project Setup
+
+# Core Python Libraries
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Machine Learning & Deep Learning
+torch>=2.0.0
+torch-geometric>=2.3.0
+scikit-learn>=1.3.0
+gensim>=4.3.0
+
+# Graph Database & Network Analysis
+gqlalchemy>=1.3.0
+mgclient>=1.3.0
+networkx>=3.0
+
+# Data Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Web Interface & UI
+streamlit>=1.28.0
+
+# PDF Generation
+reportlab>=4.0.0
+
+# AI/LLM Integration
+google-generativeai>=0.3.0
+
+# Environment & Configuration
+python-dotenv>=1.0.0
+
+# Utility Libraries
+tqdm>=4.65.0
+
+# Development & Testing (Optional)
+jupyter>=1.0.0
+ipywidgets>=8.0.0
+
+# Note: The following are built-in Python modules and don't need installation:
+# - concurrent.futures (built-in since Python 3.2)
+# - json (built-in)
+# - io (built-in)
+# - os (built-in)
+# - sys (built-in)
+# - time (built-in)
+# - random (built-in)
+# - collections (built-in)
+# - datetime (built-in)
+# - warnings (built-in)
+# - functools (built-in)
+# - itertools (built-in)
+# - threading (built-in)
