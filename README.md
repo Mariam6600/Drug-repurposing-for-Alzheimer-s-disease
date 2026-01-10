@@ -296,6 +296,7 @@ import streamlit as st
 
 # 1. Select drug from interface
 selected_drug = "Memantine"
+drug_id = drug_map[selected_drug]  # Get drug ID
 
 # 2. Run prediction
 predictions = predict_interaction_with_embeddings(drug_id)
@@ -305,22 +306,34 @@ binding_relations = [p for p in predictions if p['class_name'] == 'CHEMICALBINDS
 
 # 4. Select top gene
 top_gene = binding_relations[0]
+gene_symbol = gene_id_to_symbol.get(str(top_gene['gene']), f"Gene_{top_gene['gene']}")
 
 # 5. Generate explanation
-explanation = get_ai_explanation(selected_drug, top_gene['gene'], 
-                               top_gene['class_id'], top_gene['prob'])
+explanation, used_model = try_all_gemini_models(
+    drug_name=selected_drug,
+    drug_id=drug_id,
+    gene_name=gene_symbol,
+    gene_id=top_gene['gene'],
+    class_id=top_gene['class_id'],
+    class_prob=top_gene['prob'],
+    drug_emb=top_gene['drug_emb'],
+    gene_emb=top_gene['gene_emb'],
+    drug_metadata=drug_metadata,
+    gene_metadata=gene_metadata,
+    lang="English"
+)
 
 # 6. Add to report basket
 report_entry = {
     'drug': selected_drug,
-    'gene': top_gene['gene'],
+    'gene': gene_symbol,
     'relation': top_gene['class_name'],
     'confidence': f"{top_gene['prob']:.1%}",
     'explanation': explanation
 }
 
 # 7. Export to PDF
-generate_pdf_report([report_entry], language="English")
+generate_pdf_report([report_entry], "English")
 ```
 
 ### 4. Batch Analysis
