@@ -304,10 +304,10 @@ black . && isort .
 If you use this work in your research, please cite:
 
 ```bibtex
-@misc{alzheimer_gnn_llm_2024,
+@misc{alzheimer_gnn_llm_2025,
   title={Knowledge Graph-Enhanced Drug-Gene Interaction Prediction in Alzheimer's Disease: A GNN-LLM Approach},
-  author={Mariam Abdulrahman},
-  year={2024},
+  author={Mariam Abdul aal},
+  year={2025},
   howpublished={GitHub Repository},
   url={https://github.com/Mariam6600/Drug-repurposing-for-Alzheimer-s-disease},
   note={Computational framework for drug-gene interaction analysis and hypothesis generation}
@@ -328,7 +328,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Author**: Mariam Abdulrahman
+- **Author**: Mariam Abdul aal
 - **Email**: abdmariam900@gmail.com
 - **Project Link**: [https://github.com/Mariam6600/Drug-repurposing-for-Alzheimer-s-disease](https://github.com/Mariam6600/Drug-repurposing-for-Alzheimer-s-disease)
 
