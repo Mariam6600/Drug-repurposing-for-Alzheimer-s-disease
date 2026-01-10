@@ -137,6 +137,14 @@ The AlzKB knowledge graph contains the following main entity types:
 
 *Note: GENEASSOCIATEDWITHDISEASE relations are used for initial Alzheimer's gene extraction, not for final classification.*
 
+### Quick Reference: AlzKB Statistics
+```
+Total Nodes: 234,037
+Total Edges: 1,668,487
+Alzheimer Subgraph: ~50,000 nodes, ~65,000 drug-gene relations
+Prediction Classes: 4 (including NO_LINK)
+```
+
 ## 🔬 Methodology
 
 ### 1. Knowledge Graph Processing
@@ -216,6 +224,30 @@ The Streamlit application provides:
 - Report basket for multiple analyses
 - PDF export with professional formatting
 
+### User Interface Preview
+```
+🔬 Alzheimer's Drug Discovery System
+
+Drug Selection: [Donepezil ▼]
+┌─────────────────────────────────────┐
+│ Predict Link    │ Explain with AI   │
+└─────────────────────────────────────┘
+
+Relations Summary:
+┌─────────────┬─────────────┬─────────────┬─────────────┐
+│  NO_LINK    │ BINDS_GENE  │ INCREASES   │ DECREASES   │
+│  1,234 genes│  456 genes  │  789 genes  │  321 genes  │
+└─────────────┴─────────────┴─────────────┴─────────────┘
+
+Selected: CHEMICALBINDSGENE
+Gene: APOE — Confidence 87.3%
+
+🤖 AI Explanation:
+Based on available data, the computational model suggests...
+```
+
+*Note: Actual interface includes interactive elements, real-time predictions, and bilingual support.*
+
 ## 📁 Project Structure
 
 ```
@@ -288,7 +320,41 @@ explanation = try_all_gemini_models(
 )
 ```
 
-### 3. Batch Analysis
+### 3. Complete Workflow Example
+```python
+# Step-by-step analysis workflow
+import streamlit as st
+
+# 1. Select drug from interface
+selected_drug = "Memantine"
+
+# 2. Run prediction
+predictions = predict_interaction_with_embeddings(drug_id)
+
+# 3. Filter by relation type
+binding_relations = [p for p in predictions if p['class_name'] == 'CHEMICALBINDSGENE']
+
+# 4. Select top gene
+top_gene = binding_relations[0]
+
+# 5. Generate explanation
+explanation = get_ai_explanation(selected_drug, top_gene['gene'], 
+                               top_gene['class_id'], top_gene['prob'])
+
+# 6. Add to report basket
+report_entry = {
+    'drug': selected_drug,
+    'gene': top_gene['gene'],
+    'relation': top_gene['class_name'],
+    'confidence': f"{top_gene['prob']:.1%}",
+    'explanation': explanation
+}
+
+# 7. Export to PDF
+generate_pdf_report([report_entry], language="English")
+```
+
+### 4. Batch Analysis
 ```python
 # Analyze multiple drug-gene pairs
 results = []
@@ -302,12 +368,34 @@ generate_pdf_report(results, language="English")
 
 ## 🔬 Research Applications
 
-This system can be used for:
+This system can be applied for:
 
-- **Drug Repurposing & Hypothesis Generation**: Identify existing drugs with potential relevance to Alzheimer's disease and generate testable biological hypotheses
-- **Target Discovery**: Find novel gene targets for drug development  
-- **Mechanism Understanding**: Explain drug-gene interaction mechanisms
-- **Literature Review**: Accelerate systematic review processes
+### Drug Repurposing & Hypothesis Generation
+- Identify existing drugs that may have therapeutic potential for Alzheimer's disease
+- Generate testable biological hypotheses regarding drug-gene interactions
+- Prioritize compounds for experimental validation based on computational evidence
+
+### Target Discovery
+- Detect novel gene targets that could be relevant for drug development or therapeutic intervention
+- Explore understudied genes with potential relevance to Alzheimer's pathology
+- Support target prioritization in early-stage drug discovery
+
+### Mechanism Understanding
+- Provide interpretable explanations of predicted drug-gene interactions
+- Support the exploration of underlying biological pathways and molecular mechanisms
+- Generate hypotheses about drug mechanisms of action
+
+### Literature Review & Evidence Support
+- Assist in systematic review processes by integrating computational predictions with existing biomedical knowledge
+- Highlight potential relationships that may be underexplored in current research
+- Support evidence synthesis for meta-analyses and systematic reviews
+
+### Important Note on Validation Level
+All predictions are **computational hypotheses** requiring rigorous experimental validation. The system provides:
+- **Computational evidence**: Based on graph neural network analysis
+- **Biological context**: Grounded in AlzKB knowledge graph
+- **Interpretable outputs**: AI-generated explanations with scientific reasoning
+- **Research direction**: Hypotheses for laboratory investigation
 
 ## 🔄 Reproducibility
 
@@ -340,6 +428,8 @@ pip install -r requirements.txt
 - **Model Scope**: Trained specifically on Alzheimer's disease-related subgraph data
 - **API Dependencies**: LLM explanations require internet connectivity
 - **Hypothesis Generation Only**: Results represent computational hypotheses, not validated therapeutic recommendations
+- **Dataset Bias**: Predictions may reflect biases present in the training data from AlzKB
+- **Data Sparsity**: Some drug-gene pairs may have limited training examples, affecting prediction confidence
 
 ### Ethical Considerations
 - Results are for research purposes only
@@ -347,6 +437,12 @@ pip install -r requirements.txt
 - Requires expert interpretation and validation
 - Potential biases from training data should be considered
 - All predictions represent computational hypotheses requiring rigorous experimental validation
+
+### Validation Status
+- **Current Level**: Computational validation using cross-validation and holdout testing
+- **Required Next Steps**: Experimental validation in laboratory settings
+- **Confidence Indicators**: Model provides probability scores and uncertainty estimates
+- **Interpretation**: AI explanations are hypothesis-generating, not definitive biological statements
 
 ## 🤝 Contributing
 
