@@ -238,6 +238,9 @@ Drug-repurposing-for-Alzheimer-s-disease/
 │   ├── RGAT_confusion_matrix.png        # RGAT performance metrics
 │   ├── Ensemble_confusion_matrix.png    # Ensemble results
 │   └── *_learning_curves.png           # Training progress plots
+├── Theses/                               # Academic materials
+│   └── Thesis 0.pdf                     # ملف الأطروحة
+├── Video Project.mp4                     # فيديو المشروع
 └── README.md                            # This file
 ```
 
